@@ -1,4 +1,5 @@
 /obj
 *.a
 *.o
+*.out
 .*.swp

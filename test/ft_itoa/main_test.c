@@ -7,7 +7,7 @@
 
 char *ft_itoa(int nbr);
 
-static void benchmark_reference(void) {
+static void benchmark_original(void) {
   char *buffer;
   int nbr = MIN_NUMBER;
 
@@ -18,7 +18,7 @@ static void benchmark_reference(void) {
   }
 }
 
-static void benchmark_implementation(void) {
+static void benchmark_forgery(void) {
   char *buffer;
   int nbr = MIN_NUMBER;
 
