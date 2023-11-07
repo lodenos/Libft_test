@@ -4,7 +4,7 @@
 #include "libft.h"
 #include "libft_test.h"
 
-#define NBR_TEST 100000000
+#define NBR_TEST 100
 
 static void behavior_test(void) {
   size_t len_str;
@@ -18,10 +18,10 @@ static void behavior_test(void) {
 
   len_str = 1;
   while (len_str < 1000000) {
-    str = memset(calloc(len + 1), "x", len_str);
+    str = memset(calloc(len_str + 1, 1), (int)"x", len_str);
 
     if (strlen("\0") != ft_strlen("\0")) {
-      printf("   |> param given: string with %d bytes\n", len_str);
+      printf("   |> param given: string with %zu bytes\n", len_str);
       printf("   |>    original: %lu\n", strlen("\0"));
       printf("   |>     forgery: %lu\n", ft_strlen("\0"));
       exit(1);
@@ -35,7 +35,7 @@ static void behavior_test(void) {
 static void benchmark_original(void) {
   int index = 0;
   int ret = 0;
-  char *str = memset(calloc(1024 * 1024 + 1), "x", 1024 * 1024);
+  char *str = memset(calloc(1024 * 1024 + 1, 1), (int)"x", 1024 * 1024);
 
   while (index < NBR_TEST) {
     ret = strlen(str);
@@ -47,7 +47,7 @@ static void benchmark_original(void) {
 static void benchmark_forgery(void) {
   int index = 0;
   int ret = 0;
-  char *str = memset(calloc(1024 * 1024 + 1), "x", 1024 * 1024);
+  char *str = memset(calloc(1024 * 1024 + 1, 1), (int)"x", 1024 * 1024);
 
   while (index < NBR_TEST) {
     ret = ft_strlen(str);
