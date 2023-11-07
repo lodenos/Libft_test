@@ -5,16 +5,16 @@
 #include "libft.h"
 #include "libft_test.h"
 
-#define NBR_TEST 1000000
+#define NBR_TEST 100000000
 
 static void behavior_test(void) {
   int64_t index = INT_MIN;
 
   while (index <= INT_MAX) {
     if ((isalpha(index)) != (ft_isalpha(index))) {
-      printf(">> param given: %lld\n", index);
-      printf(">>    original: %d\n", isalpha(index));
-      printf(">>     forgery: %d\n", ft_isalpha(index));
+      printf("   |> param given: %lld\n", index);
+      printf("   |>    original: %d\n", isalpha(index));
+      printf("   |>     forgery: %d\n", ft_isalpha(index));
       exit(1);
     }
     ++index;
@@ -31,9 +31,10 @@ static void benchmark_original(void) {
 
 static void benchmark_forgery(void) {
   int index = 0;
+  int ret = 0;
 
   while (index < NBR_TEST)
-    ft_isalpha(index++);
+    ret = ft_isalpha(index++);
 }
 
 int main(void) {
@@ -44,13 +45,13 @@ int main(void) {
 
   if (forgery < original) {
     float relative = (float)original / (float)forgery;
-    printf(">> relative performance: %.2f time faster\n", relative);
+    printf("   |> relative performance: %.2f time faster\n", relative);
   } else {
     float relative = (float)forgery / (float)original;
-    printf(">> relative performance: %.2f time slower\n", relative);
+    printf("   |> relative performance: %.2f time slower\n", relative);
   }
 
-  printf(">> original - speed average: %lld ns per test\n", original / NBR_TEST);
-  printf(">> forgery  - speed average: %lld ns per test\n",  forgery / NBR_TEST);
+  printf("   |> original - speed average: %.2f ns per test\n", (float)original / NBR_TEST);
+  printf("   |> forgery  - speed average: %.2f ns per test\n",  (float)forgery / NBR_TEST);
   return 0;
 }
