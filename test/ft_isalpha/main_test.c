@@ -10,8 +10,12 @@ static void behavior_test(void) {
   int index = -100;
 
   while (index < 1000) {
-    if ((isalpha(index)) != (ft_isalpha(index)))
+    if ((isalpha(index)) != (ft_isalpha(index))) {
+      printf(">> param given: %d\n", index);
+      printf(">>    original: %d\n", isalpha(index));
+      printf(">>     forgery: %d\n", ft_isalpha(index));
       exit(1);
+    }
     ++index;
   }
 }
