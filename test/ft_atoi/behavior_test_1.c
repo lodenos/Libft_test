@@ -5,10 +5,10 @@
 
 void behavior_test(void) {
   char buffer[12];
-  int  index = -128;
+  int  index = -32768;
   int  ret_value;
 
-  while (index < 128) {
+  while (index < 32768) {
     sprintf(buffer, "%d", index);
     ret_value = ft_atoi(buffer);
     if (ret_value != index) {

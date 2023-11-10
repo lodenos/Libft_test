@@ -1,6 +1,15 @@
 #!/bin/bash
 
+################################################################################
+
 LIBFT_PATH=../Libft
+
+if [ -n "$1" ]
+then
+  LIBFT_PATH=$1
+fi
+
+################################################################################
 
 PART_I=(ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_isprint ft_strlen
   ft_memset ft_bzero ft_memcpy ft_memmove ft_strlcpy ft_strlcat ft_toupper
