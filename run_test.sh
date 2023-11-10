@@ -27,6 +27,7 @@ function compile_behavior_test() {
   cc -Wall -Werror -Wextra -std=c99 -O0 \
     -I ./include -I $LIBFT_PATH \
     -L ./ -lft \
+    ./src/memory/*.c ./src/time/*.c \
     ./src/main_behavior_test.c \
     $2 \
     -o ./test/$1/test.out \

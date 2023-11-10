@@ -4,7 +4,10 @@
 #define DEFAULT_HEAD_PATTERN 255
 #define DEFAULT_TAIL_PATTERN 255
 
+#include <stdbool.h>
+#include <stddef.h>
 #include <stdint.h>
+#include <stdlib.h>
 
 typedef struct {
   uint32_t head_length;
@@ -19,6 +22,7 @@ typedef struct {
 
 limit_memory_t *limit_memory_create(
     uint32_t ptr_length, uint32_t head_length, uint32_t tail_length);
-void limit_memory_delete(limit_memory_t **limit_memory);
+void limit_memory_delete(limit_memory_t **lm);
+bool limit_memory_detect_outbound(limit_memory_t *lm);
 
 #endif
