@@ -15,6 +15,10 @@ void behavior_test(void) {
 
   ft_lstadd_front(&lst_b, lst_a);
 
-  printf("> %s\n", (char *)lst_b->content);
-  printf("> %s\n", (char *)lst_b->next->content);
+  if (lst_b != lst_a) {
+    printf("   > wrong address\n");
+    exit(1);
+  }
+
+  // add more test
 }
