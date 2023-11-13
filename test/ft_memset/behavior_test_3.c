@@ -5,7 +5,7 @@
 
 void behavior_test(void) {
   limit_memory_t *lm_original, *lm_forgery;
-  int len_ptr = 1;
+  int len_ptr = 16777216;
 
   if (!(lm_original = limit_memory_create(len_ptr, 128, 128)))
     goto exit;
@@ -15,13 +15,8 @@ void behavior_test(void) {
   memset(lm_original->ptr, (int)'X', len_ptr);
   memset( lm_forgery->ptr, (int)'X', len_ptr);
 
-  uint8_t *src_ref;
-  if (!(src_ref = malloc(len_ptr)))
-    goto free_src_ref;
-  memset(src_ref, 'O', len_ptr);
-
-  char *ret_original =    memcpy(lm_original->ptr, src_ref, len_ptr);
-  char *ret_forgery  = ft_memcpy( lm_forgery->ptr, src_ref, len_ptr);
+  char *ret_original =    memset(lm_original->ptr, (int)'.', len_ptr);
+  char *ret_forgery  = ft_memset( lm_forgery->ptr, (int)'.', len_ptr);
 
   if (!(ret_original == lm_original->ptr)
       != !(ret_forgery == lm_forgery->ptr)) {
@@ -50,8 +45,6 @@ void behavior_test(void) {
 
   return ;
 
-  free_src_ref:
-    free(src_ref);
   free_lm_forgery:
     limit_memory_delete(&lm_forgery);
   free_lm_original:

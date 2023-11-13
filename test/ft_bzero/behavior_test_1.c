@@ -5,7 +5,7 @@
 
 void behavior_test(void) {
   limit_memory_t *lm_original, *lm_forgery;
-  int len_ptr = 1;
+  int len_ptr = 128;
 
   if (!(lm_original = limit_memory_create(len_ptr, 128, 128)))
     goto exit;
@@ -15,21 +15,8 @@ void behavior_test(void) {
   memset(lm_original->ptr, (int)'X', len_ptr);
   memset( lm_forgery->ptr, (int)'X', len_ptr);
 
-  uint8_t *src_ref;
-  if (!(src_ref = malloc(len_ptr)))
-    goto free_src_ref;
-  memset(src_ref, 'O', len_ptr);
-
-  char *ret_original =    memcpy(lm_original->ptr, src_ref, len_ptr);
-  char *ret_forgery  = ft_memcpy( lm_forgery->ptr, src_ref, len_ptr);
-
-  if (!(ret_original == lm_original->ptr)
-      != !(ret_forgery == lm_forgery->ptr)) {
-    printf("   |> return address: not the same\n");
-    printf("   |>       original: %p : %p\n", ret_original, lm_original->ptr);
-    printf("   |>        forgery: %p : %p\n", ret_forgery,  lm_forgery->ptr);
-    goto free_lm_forgery;
-  }
+     bzero(lm_original->ptr, len_ptr);
+  ft_bzero( lm_forgery->ptr, len_ptr);
 
   if (limit_memory_detect_outbound(lm_original)) {
     printf("   |> outbound memory override detected\n");
@@ -50,8 +37,6 @@ void behavior_test(void) {
 
   return ;
 
-  free_src_ref:
-    free(src_ref);
   free_lm_forgery:
     limit_memory_delete(&lm_forgery);
   free_lm_original:

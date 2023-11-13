@@ -4,9 +4,9 @@
 #include "libft.h"
 
 void behavior_test(void) {
-  int index = -128;
+  int index = -8388608;
 
-  while (index < 128) {
+  while (index < 8388608) {
     if (isprint(index) != ft_isprint(index)) {
       printf("   |> param given: %d\n", index);
       printf("   |>    original: %d\n", isprint(index));

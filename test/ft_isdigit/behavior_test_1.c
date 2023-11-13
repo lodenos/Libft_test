@@ -4,9 +4,9 @@
 #include "libft.h"
 
 void behavior_test(void) {
-  int index = -128;
+  int index = -32768;
 
-  while (index < 128) {
+  while (index < 32768) {
     if (isdigit(index) != ft_isdigit(index)) {
       printf("   |> param given: %d\n", index);
       printf("   |>    original: %d\n", isdigit(index));

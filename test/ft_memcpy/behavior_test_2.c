@@ -5,7 +5,7 @@
 
 void behavior_test(void) {
   limit_memory_t *lm_original, *lm_forgery;
-  int len_ptr = 1;
+  int len_ptr = 65536;
 
   if (!(lm_original = limit_memory_create(len_ptr, 128, 128)))
     goto exit;

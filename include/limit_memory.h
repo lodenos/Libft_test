@@ -1,8 +1,8 @@
 #ifndef LIMIT_MEMORY_H
 #define LIMIT_MEMORY_H
 
-#define DEFAULT_HEAD_PATTERN 255
-#define DEFAULT_TAIL_PATTERN 255
+#define DEFAULT_HEAD_PATTERN '$'
+#define DEFAULT_TAIL_PATTERN '$'
 
 #include <stdbool.h>
 #include <stddef.h>

@@ -4,10 +4,10 @@
 #include "libft.h"
 
 void behavior_test(void) {
-  int index = -128;
+  int index = -32768;
 
-  while (index < 128) {
-    if (isalnum(index) != ft_isalnum(index)) {
+  while (index < 32768) {
+    if ((isalnum(index)) != (ft_isalnum(index))) {
       printf("   |> param given: %d\n", index);
       printf("   |>    original: %d\n", isalnum(index));
       printf("   |>     forgery: %d\n", ft_isalnum(index));
